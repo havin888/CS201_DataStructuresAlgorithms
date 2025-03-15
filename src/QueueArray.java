@@ -34,7 +34,7 @@ public class QueueArray {
             first = (first + 1) % N;
             return result;
         }
-        returngit --version null;
+        return null;
     }
 
 }
