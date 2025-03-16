@@ -3,5 +3,8 @@ public class Element {
     public Element(int data){
         this.data = data;
     }
+    public int getData(){
+        return data;
+    }
 
 }
