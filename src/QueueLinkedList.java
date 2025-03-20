@@ -28,7 +28,7 @@ public class QueueLinkedList{
         }
         return result;
     }
-    public void moveToFront(){ //5. soru
+    public void moveToFront(){ // E5
         Node tmp = first;
         enqueue(new Node(last.data));
         while(tmp.next.next != null){
@@ -36,7 +36,7 @@ public class QueueLinkedList{
         }
         last = tmp;
     }
-    public void insertSecond(Element newElement) { //6. soru
+    public void insertSecond(Element newElement) { // E6
         if (isEmpty()) {
             enqueue(new Node(newElement.getData()));
         } else {
@@ -44,5 +44,16 @@ public class QueueLinkedList{
             newNode.next = first.next;
             first.next = newNode;
         }
+    }
+    public int minimum(){ //P3
+        Node tmp = first;
+        int min = tmp.data;
+        while(tmp != null){
+            if(tmp.data<min){
+                min = tmp.data;
+            }
+            tmp = tmp.next;
+        }
+        return min;
     }
 }

@@ -36,7 +36,7 @@ public class QueueArray {
         }
         return null;
     }
-    public void moveToRear(){ // 1. soru
+    public void moveToRear(){ // E1
         if(!isFull()){
             int frontElement = array[first].data;
             last = (last+1) % N;
@@ -44,7 +44,7 @@ public class QueueArray {
             array[last].data = frontElement;
         }
     }
-    public void enlarge(){ // 2. soru
+    public void enlarge(){ // E2
         if(isFull()){
             QueueArray newQueue = new QueueArray(2*N);
             int size = (last >= first) ? (last - first + 1) : (N - first + last + 1);
@@ -57,19 +57,23 @@ public class QueueArray {
             N = 2*N;
         }
     }
-    public int largest(){ //4. soru
-        int largest = 0;
-        int size = (last >= first) ? (last - first +1) : (N - first + last +1);
-        for (int i=first;i<size;i++){
-            if(array[i].data>largest){
+    public int largest(){ // E4
+        if(isEmpty()){
+            return -1;
+        }
+        int largest = array[first].data;
+        int i = first;
+        while(i!=last){
+            if (array[i].data>largest){
                 largest = array[i].data;
             }
+            i = (i+1) % N;
         }
         return largest;
     }
-    public void shrink(int M){ //7. soru
+    public void shrink(int M){ // E7
         QueueArray tmp = new QueueArray(M);
-        int size = (last > first) ? (last-first+1) : (N-first+last+1);
+        int size = (last >= first) ? (last-first+1) : (N-first+last+1);
         for(int i=first; i<size;i++){
             tmp.array[i] = array[(first+1)%N];
         }
@@ -78,5 +82,50 @@ public class QueueArray {
         tmp.last = size-1;
         array = tmp.array;
     }
-
+    public void insertAfterKth(int K,int value){ // P1
+        for(int i=last;i>K;i--){
+            array[i+1] = array[i];
+        }
+        array[K+1] = new Element(value);
+        last++;
+    }
+    public void deleteKth(int K){ // P2
+        array[K+1] = null;
+        for(int i=K+1; i<last;i++){
+            array[i+1] = array[i];
+        }
+        last--;
+    }
+    public int minimum(){ //P3
+        int min = array[first].data;
+        int i = first;
+        while (i != last){
+            if (array[i].data<min){
+                min = array[i].data;
+            }
+            i = (i+1) % N;
+        }
+        return min;
+    }
+    public void insertAfterLargest(int data){ // P5
+        int largest = array[first].data;
+        int i= first;
+        int j = first;
+        while(i!=last){
+            if(array[i].data>largest){
+                largest = array[i].data;
+                j = i;
+            }
+            i = (i+1) % N;
+        }
+        j = (j+1) % N;
+        int k = last;
+       while(j != k){
+           int prev = (k-1+N) % N;
+           array[k] = array[prev];
+           k = prev;
+       }
+        array[j] = new Element(data);
+        last = (last+1) % N;
+    }
 }
