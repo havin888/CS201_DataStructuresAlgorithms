@@ -1,4 +1,9 @@
-public class Tree {
+public class Tree { /*
+ Use this class when your method needs:
+start from root and traverse the entire tree
+or affects the whole tree
+or you need to managing multiple nodes
+*/
 
         protected TreeNode root;
 
@@ -45,6 +50,5 @@ public class Tree {
                 root.prettyPrint(0);
             }
         }
-
 }
 

@@ -1,4 +1,8 @@
-public class TreeNode {
+public class TreeNode { /*
+Use this class when method needs to operate on a single node
+or method is a recursive helper function to meant on called from individual nodes
+or specific to interacting with single node attributes
+*/
 
         protected TreeNode left;
         protected TreeNode right;
@@ -42,6 +46,34 @@ public class TreeNode {
                 right.prettyPrint(level + 1);
             }
         }
+        public void changeChildOfSingleton() { //Q3
+            if (this.left != null && this.right == null) {
+                this.right = this.left;
+                this.left = null;
+            } else if (this.right != null && this.left == null) {
+                this.left = this.right;
+                this.right = null;
+            }
 
-    }
+            if (this.left != null) {
+                this.left.changeChildOfSingleton();
+            }
+            if (this.right != null) {
+                this.right.changeChildOfSingleton();
+            }
+        }
+        public boolean containsTwoSameNumbers() { // Q4
+            if (this.left != null) {
+                if (this.data == this.left.data || this.left.containsTwoSameNumbers()) {
+                    return true;
+                }
+            }
+            if (this.right != null) {
+                if (this.data == this.right.data || this.right.containsTwoSameNumbers()) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+}
