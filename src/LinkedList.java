@@ -79,6 +79,28 @@ public class LinkedList {
         }
         previous.next = s.next;
     }
+    public void deleteValue(int value){
+        Node tmp = head;
+        Node previous = null;
+        while (tmp != null) {
+            if (tmp.getData() == value){
+                if (previous != null){
+                    previous.setNext(tmp.next);
+                    if (tmp.next == null){
+                        tail = previous;
+                    }
+                } else {
+                    head = tmp.next;
+                    if (head == null){
+                        tail = null;
+                    }
+                }
+                break;
+            }
+            previous = tmp;
+            tmp = tmp.getNext();
+        }
+    }
 
     int nodeCount() {
         int count = 0;
