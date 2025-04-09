@@ -41,4 +41,21 @@ public class HashList {
         private int hashFunction(int value) {
             return value % N;
         }
-    }
+
+        public boolean perfectMap(){ //Q8
+            for(int i=0; i<N;i++){
+                LinkedList tmp = table[i];
+                if(tmp.head != null && tmp.head.next != null){
+                    return false;
+                }
+            }
+            return true;
+        }
+        public boolean isValid(){ //Q13
+            for(int i=0; i<N;i++){
+                Node tmp = table[i].head.next;
+                int data = table[i].head.data;
+                /* imma head to this later */
+            }
+        }
+}
