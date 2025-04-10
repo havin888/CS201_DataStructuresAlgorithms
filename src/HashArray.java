@@ -52,6 +52,23 @@ public class HashArray {
         deleted[address] = true;
     }
 
+    public boolean jollyJumper(int[] sequence) { //Q1
+        int n = sequence.length;
+        if(n==1){
+            return true;
+        }
+        HashArray differList = new HashArray(n);
+        for(int i=0; i<n-1;i++){
+            int difference = Math.abs(sequence[i] - sequence[i+1]);
+            if(difference<1 || difference >= n ||differList.search(difference) != null){
+                return false;
+            }
+            differList.insert(difference);
+        }
+        return true;
+    }
+
+
     public int numberOfClusters(){ //Q7
         int count = 0;
         for(int i=0; i < N; i++){

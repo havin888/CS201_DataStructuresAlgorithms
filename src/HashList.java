@@ -67,5 +67,4 @@ public class HashList {
         }
         return true;
     }
-
 }
