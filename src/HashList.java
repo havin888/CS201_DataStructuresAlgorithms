@@ -51,11 +51,21 @@ public class HashList {
             }
             return true;
         }
-        public boolean isValid(){ //Q13
-            for(int i=0; i<N;i++){
-                Node tmp = table[i].head.next;
-                int data = table[i].head.data;
-                /* imma head to this later */
+    public boolean isValid() { //Q13
+        for (int i = 0; i < N; i++) {
+            Node current = table[i].head;
+            while (current != null) {
+                Node runner = current.next;
+                while (runner != null) {
+                    if (runner.data == current.data) {
+                        return false;
+                    }
+                    runner = runner.next;
+                }
+                current = current.next;
             }
         }
+        return true;
+    }
+
 }
