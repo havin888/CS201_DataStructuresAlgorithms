@@ -96,13 +96,22 @@ public class QueueArray {
         tmp.last = size-1;
         array = tmp.array;
     }
-    public void insertAfterKth(int K,int value){ // P1
-        for(int i=last;i>K;i--){
-            array[i+1] = array[i];
+    public void insertAfterKth(int K, int value) {
+        if (isFull()) {
+            System.out.println("Queue is full");
+        }else{
+            int insertPosition = (first + K + 1) % array.length;
+            int current = first % array.length;
+            while (current != insertPosition) {
+                int prev = (current - 1 + array.length) % array.length;
+                array[current] = array[prev];
+                current = prev;
+            }
+        array[insertPosition] = new Element(value);
+        last = (last + 1) % array.length;
         }
-        array[K+1] = new Element(value);
-        last++;
     }
+
     public void deleteKth(int K){ // P2
         array[K+1] = null;
         for(int i=K+1; i<last;i++){
