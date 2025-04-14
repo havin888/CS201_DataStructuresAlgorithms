@@ -28,6 +28,22 @@ public class QueueLinkedList{
         }
         return result;
     }
+
+    public static void printQueue(QueueLinkedList list){
+        Node tmp = list.first;
+        if(list.isEmpty()){
+            System.out.println("The list is empty.");
+        }else {
+            while (tmp != null) {
+                System.out.print(tmp + " -> ");
+                tmp = tmp.next;
+            }
+            if (tmp == null) {
+                System.out.print("null");
+            }
+        }
+    }
+
     public void moveToFront(){ // E5
         Node tmp = first;
         enqueue(new Node(last.data));
@@ -55,5 +71,15 @@ public class QueueLinkedList{
             tmp = tmp.next;
         }
         return min;
+    }
+
+    public static void main(String[] args) {
+        QueueLinkedList newlist = new QueueLinkedList();
+        newlist.enqueue(new Node(1));
+        newlist.enqueue(new Node(3));
+        newlist.enqueue(new Node(8));
+        printQueue(newlist);
+        newlist.dequeue();
+        printQueue(newlist);
     }
 }

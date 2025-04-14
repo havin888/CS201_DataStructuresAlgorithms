@@ -36,6 +36,20 @@ public class QueueArray {
         }
         return null;
     }
+    public static void printList(QueueArray list){
+        if(list.isEmpty()){
+            System.out.println("The list is empty.");
+        }else{
+            for(int i = 0; i < list.array.length; i++) {
+                if (list.array[i] == null) {
+                    System.out.print("null -> ");
+                } else if(list.array[i] != null){
+                    System.out.print(list.array[i].data + " -> ");
+                }
+            }
+        }
+    }
+
     public void moveToRear(){ // E1
         if(!isFull()){
             int frontElement = array[first].data;
@@ -127,5 +141,13 @@ public class QueueArray {
        }
         array[j] = new Element(data);
         last = (last+1) % N;
+    }
+
+    public static void main(String[] args) {
+        QueueArray newList = new QueueArray(8);
+        newList.enqueue(new Element(1));
+        newList.enqueue(new Element(5));
+        newList.enqueue(new Element(9));
+        printList(newList);
     }
 }
