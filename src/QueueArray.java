@@ -3,6 +3,8 @@ public class QueueArray {
     int first ;
     int last;
     int N;
+
+    /* note to myself: try to understand the questions by drawing a array set*/
     public QueueArray(int N){
         array = new Element[N];
         this.N = N;

@@ -4,6 +4,7 @@ start from root and traverse the entire tree
 or affects the whole tree
 or you need to managing multiple nodes
 */
+    /* ANOTHER NOTE FOR STUDYING: try to minimalize the questions' answer by writing it as recursive*/
 
         protected TreeNode root;
 
@@ -49,6 +50,24 @@ or you need to managing multiple nodes
             if (root != null){
                 root.prettyPrint(0);
             }
+        }
+
+        public int sumOfPath(String path){ //Q16
+            TreeNode tmp = root;
+            int count = root.data ;
+            for(int i=0;i<path.length();i++){
+                if(path.charAt(i) == '0'){
+                    tmp = tmp.left;
+                    count += tmp.data;
+                }else if(path.charAt(i) == '1'){
+                    tmp = tmp.right;
+                    count +=tmp.data;
+                }else{
+                    System.out.println("Incorrect character!");
+                    break;
+                }
+            }
+            return count; //i wrote a longer version of it lol
         }
 }
 

@@ -3,7 +3,7 @@ Use this class when method needs to operate on a single node
 or method is a recursive helper function to meant on called from individual nodes
 or specific to interacting with single node attributes
 */
-
+/* ANOTHER NOTE FOR STUDYING: try to minimalize the questions' answer by writing it as recursive*/
         protected TreeNode left;
         protected TreeNode right;
         protected int data;
@@ -75,5 +75,30 @@ or specific to interacting with single node attributes
             }
             return false;
         }
-
+        public int averages(){ //Q15
+            int count = 0;
+            if(left != null && right != null){
+                if(2*this.data == left.data+right.data){
+                    count = 1;
+                }
+                if(left !=null){
+                    count += left.averages();
+                }
+                if(right !=null){
+                    count += right.averages();
+                }
+            }
+            return count;
+        }
+        public void accumulateLeafNodes(QueueArray queue) { //Q17
+            if (left != null && right != null) {
+                queue.enqueue(new Element(data));
+            }
+            if (left != null) {
+                left.accumulateLeafNodes(queue);
+            }
+            if (right != null) {
+                right.accumulateLeafNodes(queue);
+            }
+        }
 }
