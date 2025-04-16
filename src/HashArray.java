@@ -82,6 +82,22 @@ public class HashArray {
             return count;
         }
     }
+
+    public boolean sumOfTwo(int[] array, int k){ //Q12
+        HashArray table = new HashArray(100);
+        for(int i=0; i<array.length;i++){
+            table.insert(array[i]);
+        }
+        for(int i=0; i<array.length;i++){
+            if(table.search(k-array[i]) != null){
+                /*taking the complement of k
+                to see if there's any number matching
+                with array[i] */
+                return true;
+            }
+        }
+        return false;
+    }
     public static boolean sumOfFourK(int[] array, int K) { //Q14
         int n = array.length;
         HashArray pairSums = new HashArray(n);
@@ -105,7 +121,23 @@ public class HashArray {
         }
         return false;
     }
-
+    public int[] union(int[] list1, int[] list2){ //Q15
+        HashArray tmp = new HashArray(100);
+        int size = list1.length;
+        for(int i=0; i<list1.length;i++){
+            tmp.insert(list1[i]);
+        }
+        for(int i=0; i<list2.length;i++){
+            if(tmp.search(list2[i]) == null){
+                size++;
+            }
+        }
+        int[] unionArray = new int[size];
+        for(int i=0;i<size;i++){
+            /* coming back to that part later */
+        }
+        return unionArray;
+    }
 
 
 }
