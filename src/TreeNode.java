@@ -101,8 +101,50 @@ or specific to interacting with single node attributes
                 right.accumulateLeafNodes(queue);
             }
         }
-       /* public int sumOfNodesBetween(int p, int q){
-            // i'll get to this later on
-        } */
-
+        public int sumOfNodesBetween(int p, int q){ //Q20
+            int sum = 0;
+            if(this.data > p && this.left !=null){
+                sum += this.left.sumOfNodesBetween(p,q);
+            }
+            if(this.data > p && this.data<q){
+                sum+=this.data;
+            }
+            if(this.data<q && this.right != null){
+                sum+= this.right.sumOfNodesBetween(p,q);
+            }
+            return sum;
+        }
+        int[] collectNodes(){ //Q21,
+            /* small bug in adding length at recursive functions
+            in professor's answer, so I added "+" sign
+             to correctly arrange result[] size*/
+            int[] leftResult = null;
+            int[] rightResult = null;
+            int length = 0;
+            if (left != null){
+                leftResult = left.collectNodes();
+                length += leftResult.length;
+            }
+            if (right != null){
+                rightResult = right.collectNodes();
+                length += rightResult.length;
+            }
+            int[] result = new int[length + 1];
+            int k = 0;
+            if (leftResult != null){
+                for (int i = 0; i < leftResult.length; i++){
+                    result[k] = leftResult[i];
+                    k++;
+                }
+            }
+            result[k] = data;
+            k++;
+            if (rightResult != null){
+                for (int i = 0; i < rightResult.length; i++){
+                    result[k] = rightResult[i];
+                    k++;
+                }
+            }
+            return result;
+        }
 }
