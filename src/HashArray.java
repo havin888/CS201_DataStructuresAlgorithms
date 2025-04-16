@@ -121,7 +121,7 @@ public class HashArray {
         }
         return false;
     }
-    public int[] union(int[] list1, int[] list2){ //Q15
+    public static int[] union(int[] list1, int[] list2){ //Q15
         HashArray tmp = new HashArray(100);
         int size = list1.length;
         for(int i=0; i<list1.length;i++){
@@ -133,12 +133,41 @@ public class HashArray {
             }
         }
         int[] unionArray = new int[size];
-        for(int i=0;i<size;i++){
-            /* coming back to that part later */
+        int index = 0;
+        for(int i=0; i<list1.length;i++){
+            unionArray[index++] = list1[i];
         }
+        for(int i=0; i<list2.length;i++){
+            if(tmp.search(list2[i]) == null){
+            unionArray[index++]= list2[i];
+        }
+            }
         return unionArray;
+    }
+    public static void printArray (int[] list){
+        //test function to print arrays
+        for(int i=0; i<list.length;i++){
+            System.out.print(list[i] + " -> ");
+        }
     }
 
 
+    public static void main(String[] args) {
+        int[] testList1 = new int[3];
+        int[] testList2 = new int[2];
+        int tmp = 1;
+        for(int i=0; i<testList1.length-1;i++){
+            testList1[i] = tmp;
+            tmp++;
+        }
+        testList1[2] = 4;
+        for(int i=0; i<testList2.length;i++){
+            testList2[i] = tmp;
+            tmp++;
+        }
+        printArray(testList1);
+        printArray(testList2);
+        printArray(union(testList1,testList2));
+    }
 }
 
