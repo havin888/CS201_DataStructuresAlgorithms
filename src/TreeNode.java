@@ -101,4 +101,7 @@ or specific to interacting with single node attributes
                 right.accumulateLeafNodes(queue);
             }
         }
+        public int sumOfNodesBetween(int p, int q){
+            // i'll get to this later on
+        }
 }
