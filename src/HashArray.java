@@ -81,7 +81,27 @@ public class HashArray {
             return count;
         }
     }
-
+    static int[] sortByHashing(int[] array) { //Q10
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            }
+        }
+        HashArray table = new HashArray(2 * array.length);
+        for (int i = 0; i < array.length; i++) {
+            table.insert(array[i]);
+        }
+        int[] result = new int[array.length];
+        int index = 0;
+        for (int i = 1; i <= max; i++) {
+            if (table.search(i) != null) {
+                result[index] = i;
+                index++;
+            }
+        }
+        return result;
+    }
     public boolean sumOfTwo(int[] array, int k){ //Q12
         HashArray table = new HashArray(100);
         for(int i=0; i<array.length;i++){
@@ -143,33 +163,6 @@ public class HashArray {
             }
         return unionArray;
     }
-    public static int[] intersect(int[] list1, int[] list2) {
-        HashArray table = new HashArray(list1.length + list2.length);
-        int[] temp = new int[Math.min(list1.length, list2.length)];
-        int index = 0;
-        for (int i = 0; i < list1.length; i++) {
-            table.insert(list1[i]);
-        }
-        for (int i = 0; i < list2.length; i++) {
-            Element found = table.search(list2[i]);
-            if (found != null) {
-                temp[index++] = list2[i];
-                int address = list2[i] % table.N;
-                while (table.table[address] != null) {
-                    if (!table.deleted[address] && table.table[address].getData() == list2[i]) {
-                        table.deleted[address] = true;
-                        break;
-                    }
-                    address = (address + 1) % table.N;
-                }
-            }
-        }
-        int[] result = new int[index];
-        for (int i = 0; i < index; i++) {
-            result[i] = temp[i];
-        }
-        return result;
-    }
     public static void printArray (int[] list){
         //test function to print arrays
         for(int i=0; i<list.length;i++){
@@ -192,7 +185,6 @@ public class HashArray {
         printArray(testList1);
         printArray(testList2);
         printArray(union(testList1,testList2));
-        printArray(intersect(testList1,testList2));
     }
 }
 
