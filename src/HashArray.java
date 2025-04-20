@@ -2,7 +2,7 @@ public class HashArray {
 
     private Element[] table;
 
-    private boolean[] deleted;
+    private boolean[] deleted; // do not forget to update this array when deleting something in the hash table
 
     private int N;
 
