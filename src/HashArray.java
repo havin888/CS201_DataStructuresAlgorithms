@@ -102,6 +102,30 @@ public class HashArray {
         }
         return result;
     }
+    public int[] intersection(int[] list1, int[] list2){ //Q11
+        int count = list1.length;
+        HashArray tmp = new HashArray(list1.length + list2.length);
+        for (int k : list1) {
+            tmp.insert(k);
+        }
+        for (int value : list2) {
+            if (tmp.search(value) != null) {
+                count++;
+            }
+        }
+        int[] intersection = new int[count];
+        int j = 0;
+        for (int k : list1) {
+            intersection[j++] = k;
+        }
+        for (int k : list2) {
+            if (tmp.search(k) != null) {
+                intersection[j++] = k;
+            }
+        }
+        return intersection;
+    }
+
     public boolean sumOfTwo(int[] array, int k){ //Q12
         HashArray table = new HashArray(100);
         for(int i=0; i<array.length;i++){
@@ -143,24 +167,24 @@ public class HashArray {
     public static int[] union(int[] list1, int[] list2){ //Q15
         HashArray tmp = new HashArray(100);
         int size = list1.length;
-        for(int i=0; i<list1.length;i++){
-            tmp.insert(list1[i]);
+        for (int j : list1) {
+            tmp.insert(j);
         }
-        for(int i=0; i<list2.length;i++){
-            if(tmp.search(list2[i]) == null){
+        for (int j : list2) {
+            if (tmp.search(j) == null) {
                 size++;
             }
         }
         int[] unionArray = new int[size];
         int index = 0;
-        for(int i=0; i<list1.length;i++){
-            unionArray[index++] = list1[i];
+        for (int j : list1) {
+            unionArray[index++] = j;
         }
-        for(int i=0; i<list2.length;i++){
-            if(tmp.search(list2[i]) == null){
-            unionArray[index++]= list2[i];
-        }
+        for (int j : list2) {
+            if (tmp.search(j) == null) {
+                unionArray[index++] = j;
             }
+        }
         return unionArray;
     }
     public static void printArray (int[] list){
