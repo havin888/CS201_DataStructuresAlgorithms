@@ -42,6 +42,21 @@ public class HashList {
             return value % N;
         }
 
+
+        public HashList simplify(){ //Q6
+            int j=0;
+            HashList solution = new HashList(table.length);
+            for(int i=0; i<table.length;i++){
+                Node tmp = table[j].head;
+                while(tmp != null){
+                    if(solution.search(tmp.data) == null){
+                        solution.insert(tmp);
+                    }
+                    tmp = tmp.next;
+                }
+            }
+            return solution;
+        }
         public boolean perfectMap(){ //Q8
             for(int i=0; i<N;i++){
                 LinkedList tmp = table[i];
