@@ -81,6 +81,19 @@ public class HashArray {
             return count;
         }
     }
+    public static int numberOfExtras(int[] array){ //Q9
+        HashArray tmp = new HashArray(array.length);
+       int extra = 0;
+
+       for(int i: array){
+           if(tmp.search(i)==null){
+               tmp.insert(i);
+           }else{
+               extra++;
+           }
+       }
+        return extra;
+    }
     static int[] sortByHashing(int[] array) { //Q10
         int max = array[0];
         for (int i = 1; i < array.length; i++) {
@@ -206,9 +219,11 @@ public class HashArray {
             testList2[i] = tmp;
             tmp++;
         }
+        int[] testList3 = {1,1,1,3,3,3};
         printArray(testList1);
         printArray(testList2);
         printArray(union(testList1,testList2));
+        System.out.println(numberOfExtras(testList3));
     }
 }
 
