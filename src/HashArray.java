@@ -66,7 +66,17 @@ public class HashArray {
         }
         return true;
     }
-
+    public static boolean anyDuplicate(int[] array){ //Q5
+        HashArray tmp = new HashArray(array.length);
+        for(int i:array){
+            if(tmp.search(i)==null){
+                tmp.insert(i);
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
 
     public int numberOfClusters(){ //Q7
         int count = 0;
