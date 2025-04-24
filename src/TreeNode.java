@@ -147,4 +147,17 @@ or specific to interacting with single node attributes
             }
             return result;
         }
+        public boolean isMirror(TreeNode left, TreeNode right) { //Q25
+            if(left== null && right== null){
+                return true;
+            }
+            if(left==null || right==null){
+                return false;
+            }
+            if (left.data!=right.data){
+                return false;
+            }else{
+                return isMirror(left.left,right.right) && isMirror(left.right,right.left);
+            }
+        }
 }
