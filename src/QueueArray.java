@@ -112,6 +112,7 @@ public class QueueArray {
             }
         array[insertPosition] = new Element(value);
         last = (last + 1) % array.length;
+        first = (first - 1) % array.length;
         }
     }
 
