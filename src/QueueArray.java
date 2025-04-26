@@ -103,16 +103,14 @@ public class QueueArray {
             System.out.println("Queue is full");
         }else{
             int insertPosition = (first + K + 1) % array.length;
-            int current = first % array.length;
+            int current = last;
             while (current != insertPosition) {
-                int prev = (current - 1 + array.length) % array.length;
-                array[prev] = array[current];
-                prev = current;
-                current = (prev + 1 + array.length) % array.length;
+                int next = (current + 1) % array.length;
+                array[next] = array[current];
+                current = (current - 1 + array.length) % array.length;
             }
-        array[insertPosition] = new Element(value);
-        last = (last + 1) % array.length;
-        first = (first - 1) % array.length;
+            array[insertPosition] = new Element(value);
+            last = (last + 1) % array.length;
         }
     }
 
