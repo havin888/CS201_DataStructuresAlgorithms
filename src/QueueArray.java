@@ -4,7 +4,7 @@ public class QueueArray {
     int last;
     int N;
 
-    /* note to myself: try to understand the questions by drawing a array set*/
+    /* note to myself: try to understand the questions by drawing an array set*/
     public QueueArray(int N){
         array = new Element[N];
         this.N = N;
@@ -106,8 +106,9 @@ public class QueueArray {
             int current = first % array.length;
             while (current != insertPosition) {
                 int prev = (current - 1 + array.length) % array.length;
-                array[current] = array[prev];
-                current = prev;
+                array[prev] = array[current];
+                prev = current;
+                current = (prev + 1 + array.length) % array.length;
             }
         array[insertPosition] = new Element(value);
         last = (last + 1) % array.length;
