@@ -144,7 +144,7 @@ public class QueueArray {
             i = (i+1) % N;
         }
         j = (j+1) % N;
-        int k = last;
+        int k = (last+1) % N;
        while(j != k){
            int prev = (k-1+N) % N;
            array[k] = array[prev];
