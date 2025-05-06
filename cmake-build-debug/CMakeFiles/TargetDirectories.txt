@@ -1,3 +1,0 @@
-C:/Users/nhavi/CLionProjects/CS201_DataStructuresAlgorithms/cmake-build-debug/CMakeFiles/CS201_DataStructuresAlgorithms.dir
-C:/Users/nhavi/CLionProjects/CS201_DataStructuresAlgorithms/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/nhavi/CLionProjects/CS201_DataStructuresAlgorithms/cmake-build-debug/CMakeFiles/rebuild_cache.dir
